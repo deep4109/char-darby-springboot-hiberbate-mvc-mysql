@@ -23,8 +23,8 @@ public class SpringBootStarterApplication {
     public CommandLineRunner commandLineRunner(StudentDao studentDao) {
         return runner -> {
             System.out.println("Hello World");
-            createStudent(studentDao);
-            getStudent(studentDao);
+           // createStudent(studentDao);
+           // getStudent(studentDao);
            // updateStudent(studentDao);
             //deleteStudent(studentDao);
             //deleteAll(studentDao);
