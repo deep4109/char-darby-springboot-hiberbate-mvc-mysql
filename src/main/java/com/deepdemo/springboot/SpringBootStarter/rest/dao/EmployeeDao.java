@@ -8,7 +8,7 @@ public interface EmployeeDao {
 
     void save(Employee theStudent);
 
-    Employee getStudent(int id);
+    Employee findEmployee(int id);
 
     List<Employee> findEmployeeByLastName(String lastname);
 

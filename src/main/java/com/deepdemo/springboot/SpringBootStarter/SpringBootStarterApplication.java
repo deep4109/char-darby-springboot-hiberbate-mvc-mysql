@@ -4,8 +4,10 @@ import com.deepdemo.springboot.SpringBootStarter.hibernatebasic.dao.StudentDao;
 import com.deepdemo.springboot.SpringBootStarter.hibernatebasic.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.List;
 
@@ -13,6 +15,8 @@ import java.util.List;
         "com.deepdemo.springboot.util"
 }
 )
+@EnableJpaRepositories
+@EnableAutoConfiguration
 public class SpringBootStarterApplication {
 
     public static void main(String[] args) {

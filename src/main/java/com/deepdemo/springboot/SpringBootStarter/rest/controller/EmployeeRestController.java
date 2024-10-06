@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api2")
 public class EmployeeRestController {
 
     private EmployeeDao employeeDao;
@@ -24,6 +24,12 @@ public class EmployeeRestController {
     public List<Employee> findAll() {
         return employeeDao.findAll();
     }
+
+    @GetMapping("/employees/{id}")
+    public Employee employee(@PathVariable int id) {
+        return employeeDao.findEmployee(id);
+    }
+
 
 /*
     @ExceptionHandler

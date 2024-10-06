@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,10 +13,10 @@ import java.util.List;
 @Repository
 public class EmployeeDaoImpl implements EmployeeDao {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     @Autowired
-    public EmployeeDaoImpl(EntityManager entityManager) {
+    public EmployeeDaoImpl(@Qualifier("secondaryEntityManagerFactory")EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
@@ -26,22 +27,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public Employee getStudent(int id) {
+    public Employee findEmployee(int id) {
         return entityManager.find(Employee.class, id);
     }
 
     @Override
     public List<Employee> findAll() {
         TypedQuery<Employee> query = entityManager.createQuery("FROM Employee", Employee.class);
-        List<Employee> employeeList = query.getResultList();
-        return employeeList;
+        return query.getResultList();
     }
 
     @Override
     public List<Employee> findEmployeeByLastName(String lastname) {
         TypedQuery<Employee> query = entityManager.createQuery("FROM Student WHERE lastName='Doe'", Employee.class);
-        List<Employee> students = query.getResultList();
-        return students;
+        return query.getResultList();
     }
 
     @Override
@@ -64,7 +63,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     @Transactional
     public int deleteAll() {
-        int numRowsDeleted = entityManager.createQuery("DELETE from Student").executeUpdate();
-        return numRowsDeleted;
+        return entityManager.createQuery("DELETE from Student").executeUpdate();
     }
 }
