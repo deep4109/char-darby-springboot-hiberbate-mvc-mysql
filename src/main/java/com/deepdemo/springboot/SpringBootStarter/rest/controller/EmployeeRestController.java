@@ -1,5 +1,7 @@
 package com.deepdemo.springboot.SpringBootStarter.rest.controller;
 
+
+// because we are using spring data-rest
 import com.deepdemo.springboot.SpringBootStarter.rest.dao.EmployeeDao;
 import com.deepdemo.springboot.SpringBootStarter.rest.entity.Employee;
 import com.deepdemo.springboot.SpringBootStarter.rest.exception.StudentNotFoundExceptions;
@@ -9,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
 @RestController
 @RequestMapping("/api2")
 public class EmployeeRestController {
@@ -58,7 +60,7 @@ public class EmployeeRestController {
         return "Deleted employee id " + id;
     }
 
-/*
+*//*
     @ExceptionHandler
     public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundExceptions exceptions) {
         StudentErrorResponse error = new StudentErrorResponse();
@@ -76,5 +78,5 @@ public class EmployeeRestController {
         error.setMessage(exception.getMessage());
         error.setTimeStamp(System.currentTimeMillis());
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-    }*/
-}
+    }*//*
+}*/
