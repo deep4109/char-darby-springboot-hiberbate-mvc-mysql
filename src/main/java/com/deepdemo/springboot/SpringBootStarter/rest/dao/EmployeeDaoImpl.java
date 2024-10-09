@@ -16,14 +16,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
     private final EntityManager entityManager;
 
     @Autowired
-    public EmployeeDaoImpl(@Qualifier("secondaryEntityManagerFactory")EntityManager entityManager) {
+    public EmployeeDaoImpl(@Qualifier("secondaryEntityManagerFactory") EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
     @Override
-    @Transactional
-    public void save(Employee theStudent) {
-        entityManager.persist(theStudent);
+    public Employee save(Employee employee) {
+        Employee dbEmployee = entityManager.merge(employee);
+        return dbEmployee;
     }
 
     @Override
@@ -44,8 +44,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    @Transactional
-    public Employee updatStudent(int id) {
+    public Employee updatEmployee(int id) {
         Employee student = entityManager.find(Employee.class, id);
         //change first name
         student.setFirstName("Deepankar");
@@ -53,15 +52,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    @Transactional
-    public void deleteStudent(int id) {
+    public void deleteEmployee(int id) {
         Employee student = entityManager.find(Employee.class, id);
         entityManager.remove(student);
 
     }
 
     @Override
-    @Transactional
     public int deleteAll() {
         return entityManager.createQuery("DELETE from Student").executeUpdate();
     }

@@ -1,10 +1,10 @@
-package com.deepdemo.springboot.SpringBootStarter.rest.dao;
+package com.deepdemo.springboot.SpringBootStarter.rest.service;
 
 import com.deepdemo.springboot.SpringBootStarter.rest.entity.Employee;
 
 import java.util.List;
 
-public interface EmployeeDao {
+public interface EmployeeService {
 
     Employee save(Employee theStudent);
 
