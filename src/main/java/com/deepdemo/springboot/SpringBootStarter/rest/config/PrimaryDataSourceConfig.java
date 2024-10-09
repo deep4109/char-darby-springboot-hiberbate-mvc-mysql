@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(
         basePackages = "com.deepdemo.springboot.SpringBootStarter.hibernatebasic.dao",
-        entityManagerFactoryRef = "primaryEntityManagerFactory",
+        entityManagerFactoryRef = "entityManagerFactory",
         transactionManagerRef = "primaryTransactionManager"
 )
 public class PrimaryDataSourceConfig {
@@ -51,7 +51,7 @@ public class PrimaryDataSourceConfig {
     @Primary
     @Bean
     public PlatformTransactionManager primaryTransactionManager(
-            @Qualifier("primaryEntityManagerFactory") EntityManagerFactory primaryEntityManagerFactory) {
+            @Qualifier("entityManagerFactory") EntityManagerFactory primaryEntityManagerFactory) {
         return new JpaTransactionManager(primaryEntityManagerFactory);
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api2")
 public class EmployeeRestController {
 
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
     @Autowired
     public EmployeeRestController(EmployeeService employeeService) {

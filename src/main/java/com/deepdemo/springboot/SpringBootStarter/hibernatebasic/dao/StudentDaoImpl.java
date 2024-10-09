@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class StudentDaoImpl implements StudentDao {
     private EntityManager entityManager;
 
     @Autowired
-    public StudentDaoImpl(EntityManager entityManager) {
+    public StudentDaoImpl(@Qualifier("primaryEntityManagerFactory") EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 

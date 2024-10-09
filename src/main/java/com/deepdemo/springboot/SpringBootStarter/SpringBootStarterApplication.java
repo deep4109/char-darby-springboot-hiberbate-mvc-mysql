@@ -15,7 +15,6 @@ import java.util.List;
         "com.deepdemo.springboot.util"
 }
 )
-@EnableJpaRepositories
 @EnableAutoConfiguration
 public class SpringBootStarterApplication {
 
