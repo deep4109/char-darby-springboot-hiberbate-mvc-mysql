@@ -30,7 +30,7 @@ public class SecondaryDataSourceConfig {
         return new DataSourceProperties();
     }
 
-    @Bean
+    @Bean(name = "secondaryDataSource")
     public DataSource secondaryDataSource() {
         return secondaryDataSourceProperties().initializeDataSourceBuilder().build();
     }

@@ -22,6 +22,7 @@ public class SpringBootStarterApplication {
         SpringApplication.run(SpringBootStarterApplication.class, args);
     }
 
+
     @Bean
     public CommandLineRunner commandLineRunner(StudentDao studentDao) {
         return runner -> {
